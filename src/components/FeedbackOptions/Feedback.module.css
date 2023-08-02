@@ -1,0 +1,12 @@
+.category__list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  list-style-type: none;
+}
+
+.button {
+  padding: 5px;
+  text-transform: capitalize;
+}
