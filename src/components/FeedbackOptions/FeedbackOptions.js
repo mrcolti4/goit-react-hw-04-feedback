@@ -5,16 +5,16 @@ import css from './Feedback.module.css';
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <ul className={css.category__list}>
-      {Object.values(options).map((category, index) => {
+      {options.map((category, index) => {
         return (
           <li key={index}>
             <button
               className={css.button}
-              key={index}
+              data-id={category.key}
               onClick={onLeaveFeedback}
               type="button"
             >
-              {category}
+              {category.label}
             </button>
           </li>
         );
@@ -24,10 +24,11 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.shape({
-    good: PropTypes.string.isRequired,
-    neutral: PropTypes.string.isRequired,
-    bad: PropTypes.string.isRequired,
-  }).isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
